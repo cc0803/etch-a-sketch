@@ -2,6 +2,7 @@ const container = document.querySelector(".container");
 const sizeButton = document.querySelector(".size-button");
 const rainbowButton = document.querySelector(".rainbow-button")
 const clearButton = document.querySelector(".clear")
+const blackButton = document.querySelector(".black")
 let rainbow = ["red", "orange", "yellow", "green", "blue", "purple"];
 let count = 0;
 
@@ -70,3 +71,8 @@ clearButton.addEventListener("click", () => {
     let gridElements = document.querySelectorAll(".pixel");
     gridElements.forEach(gridItem => gridItem.style.backgroundColor = "white");
 });
+
+blackButton.addEventListener("click", () => {
+    let gridElements = document.querySelectorAll(".pixel");
+    gridElements.forEach(gridItem => hover());
+})
