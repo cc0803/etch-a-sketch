@@ -1,5 +1,9 @@
-const container = document.querySelector("div");
+const container = document.querySelector(".container");
 const sizeButton = document.querySelector(".size-button");
+const rainbowButton = document.querySelector(".rainbow-button")
+const clearButton = document.querySelector(".clear")
+let rainbow = ["red", "orange", "yellow", "green", "blue", "purple"];
+let count = 0;
 
 
 //Create Pixelfield
@@ -44,3 +48,25 @@ function removeNodes(){
     }
     return;
 }
+
+rainbowButton.addEventListener("click", () =>{
+    let gridElements = document.querySelectorAll(".pixel");
+    gridElements.forEach(gridItem => {
+        gridItem.addEventListener("mousemove", () =>{
+            randomColor(gridItem);
+        })
+    })
+});
+
+function randomColor(element){
+    if (count == rainbow.length){
+        count = 0;
+    } 
+    element.style.backgroundColor = rainbow[count];
+    count++;
+}
+
+clearButton.addEventListener("click", () => {
+    let gridElements = document.querySelectorAll(".pixel");
+    gridElements.forEach(gridItem => gridItem.style.backgroundColor = "white");
+});
