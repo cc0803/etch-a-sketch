@@ -14,17 +14,20 @@ function createPixels(number){
 }
 //Get size for pixelfield
 sizeButton.addEventListener("click", () => {
+    removeNodes();
     createPixels(sizing());
+    hover();
 });
 
 //Add hovering
-let gridElements = document.querySelectorAll(".pixel");
-gridElements.forEach(gridItem => gridItem.addEventListener("mousemove", () => {
-        gridItem.style.backgroundColor = "black";
-}));
+function hover() {
+    let gridElements = document.querySelectorAll(".pixel");
+    gridElements.forEach(gridItem => gridItem.addEventListener("mousemove", () => {
+            gridItem.style.backgroundColor = "black";
+    }));
+}
 
-
-
+//Get the size of the pixel field
 function sizing(){
     let size = Number(prompt("Enter a size for the pixel field between 1 and 64"));
     if (size == NaN || size > 64 || size < 1){
@@ -32,4 +35,12 @@ function sizing(){
     } else {
         return size;
     }
+}
+
+function removeNodes(){
+    let gridElements = document.querySelectorAll(".pixel");
+    if (gridElements !== null){
+        gridElements.forEach(gridItem => gridItem.remove());
+    }
+    return;
 }
